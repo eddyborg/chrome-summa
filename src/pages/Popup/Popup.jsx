@@ -1,25 +1,25 @@
 import React from 'react';
-import logo from '../../assets/img/logo.svg';
-import Greetings from '../../containers/Greetings/Greetings';
 import './Popup.css';
 
 const Popup = () => {
+  const openSummarizer = () => {
+    chrome.tabs.create({
+      url: chrome.runtime.getURL('panel.html')
+    });
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/pages/Popup/Popup.jsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React!
-        </a>
-      </header>
+    <div className="popup-container">
+      <div className="popup-header">
+        <h1>Summa</h1>
+        <p>AI-Powered Webpage Summarizer</p>
+      </div>
+      <button onClick={openSummarizer} className="open-btn">
+        Open Summarizer
+      </button>
+      <div className="popup-footer">
+        <p>Click to summarize the current webpage</p>
+      </div>
     </div>
   );
 };
